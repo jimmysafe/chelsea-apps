@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from './Footer'
 import Nav from './Nav'
 
 const Layout = (props) => {
@@ -8,6 +9,7 @@ const Layout = (props) => {
         <main>
             {props.children}
         </main>
+        <Footer page={props.page}/>
         </>
     )
 }
