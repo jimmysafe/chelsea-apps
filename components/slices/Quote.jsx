@@ -1,5 +1,4 @@
-import LeakWhite from '../../public/images/leak_white.svg'
-import LeakBlack from '../../public/images/leak_black.svg'
+import Leak from '../common/Leak'
 
 const Quote = (props) => {
     
@@ -28,11 +27,7 @@ const Quote = (props) => {
 
                 </div>
             </section>
-            {quote.leak !== 'none' &&
-                <div className={`leak ${quote.leak === "right" ? 'svg-right' : 'svg-left'}`}>
-                    {quote.quote_color === "white" ? <LeakWhite /> : <LeakBlack />}
-                </div>
-            }
+            <Leak leak={quote.leak} color={quote.quote_color} />
         </div>
     )
 }

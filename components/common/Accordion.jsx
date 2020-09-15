@@ -25,7 +25,7 @@ const sites = [
     }
   ];
 
-const Offices = () => {
+const Accordion = () => {
     const [activeSection, setActiveSection] = useState(0);
 
     const handleChange = (i) => {
@@ -73,4 +73,4 @@ const Offices = () => {
     )
 }
 
-export default Offices
+export default Accordion
