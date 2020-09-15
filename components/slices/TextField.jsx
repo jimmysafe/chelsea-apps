@@ -1,4 +1,5 @@
 import Leak from '../common/Leak'
+import { getBgColor, getTextColor } from '../../utils'
 
 const TextField = (props) => {
 
@@ -8,41 +9,13 @@ const TextField = (props) => {
         pageColor: props.page.data.page_color
     }
 
-    const getBgColor = () => {
-        switch(field.section_color){
-            case 'page color':
-                return colors.pageColor
-            case 'white':
-                return 'white'
-            case 'black':
-                return '#1E1E1E'
-            default:
-                return ""
-        }
-    }  
-    
-    const getTextColor = () => {
-        switch(field.section_color){
-            case 'page color':
-                return colors.textColor
-            case 'white':
-                return '#1E1E1E'
-            case 'black':
-                return 'white'
-            default:
-                return ""
-        }
-    } 
-
-    
-
     return (
         <div style={{ position: "relative" }}>
             <section 
                 className="py-5 text-field"
                 style={{
-                    color: getTextColor(),
-                    background: getBgColor(),
+                    color: getTextColor(field.section_color, colors),
+                    background: getBgColor(field.section_color, colors),
                     padding: field.section_title[0].text ? '3rem 0' : '4rem 0!important'
                 }}
             >
@@ -57,7 +30,7 @@ const TextField = (props) => {
                     }
                 </div>
             </section>
-            <Leak leak={field.leak} color={getBgColor()}/>
+            <Leak leak={field.leak} color={getBgColor(field.section_color, colors)}/>
         </div>
     )
 }

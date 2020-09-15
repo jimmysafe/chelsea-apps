@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
 import axios from 'axios'
-import { siteUrl } from '../../config'
+import { siteUrl } from '../../utils'
 
 const ContactForm = () => {
     const [submitting, setSubmitting] = useState(false)
