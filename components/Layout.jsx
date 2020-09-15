@@ -9,7 +9,7 @@ const Layout = (props) => {
         <main>
             {props.children}
         </main>
-        <Footer page={props.page}/>
+        {/* <Footer page={props.page}/> */}
         </>
     )
 }

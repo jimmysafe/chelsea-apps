@@ -1,11 +1,13 @@
-import Offices from "../components/common/Offices"
 import { getHomePage } from "../prismic/queries"
+import Slice from '../components/Slice'
 
 const Home = ({ page }) => {
   console.log(page)
   return (
     <div style={{ paddingTop: '120px' }}>
-      <Offices />
+      {page.data.body.map((slice, i) => (
+        <Slice key={i} slice={slice} page={page}/>
+      ))}
     </div>
   )
 }
