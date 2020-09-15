@@ -391,9 +391,10 @@ body{
 .accordion {
     margin: 0 auto;
     width: 400px;
+    max-height: 47.5rem;
     }
     
-    .accordion > label {
+    .accordion > label, .accordion .section-header {
         width: 100%;
         padding: 9px 10px;
         background: var(--main-yellow);
@@ -420,9 +421,10 @@ body{
     {
         text-align: center;
     }
-        .paddingaroundnames{
-            padding: 1rem;
-        }
+    .paddingaroundnames{
+        padding: 1rem;
+    }
+
     #label2{
         font-family: futura-pt-bold!important;
         font-weight: 700;
@@ -435,7 +437,8 @@ body{
         cursor: pointer;
         position: relative;
     }    
-    .label-accord {
+
+    .label-accord, .section-header {
         font-family: futura-pt-bold!important;
         font-weight: 700;
         text-transform: uppercase;
@@ -448,23 +451,28 @@ body{
         position: relative;
     }    
 
-    .accordion > input:checked + label svg{
+    .accordion .accordion-arrow {
+        position: absolute;
+        right: 40px;
+        top: 35%;
+        transition: all 0.3s ease;
+    }
+
+    .accordion .accordion-arrow.arrowOpen {
         transform: rotate(90deg);
-        }
-        
-   
-    #label2 > svg {
-        position: absolute;
-        right: 40px;
-        top: 35%;
-        transition: all 0.1s ease;
     }
-    .label-accord > svg {
-        position: absolute;
-        right: 40px;
-        top: 35%;
-        transition: all 0.1s ease;
-    }
+
+    .accordion .section-content.open {
+        max-height: 40rem;
+        transition: max-height 0.3s linear;
+        background: var(--main-yellow);
+      }
+      
+      .accordion .section-content.closed {
+        max-height: 0;
+        transition: max-height 0.3s linear;
+        overflow: hidden;
+      }
     
 .parallax-window-single{
     height: 80vh;
@@ -476,17 +484,6 @@ body{
     flex-direction: column;
 }
     
-    .accordion > div {
-        height: 0;
-        overflow: hidden;
-    -webkit-transition: all linear 200ms;
-    -moz-transition: all linear 200ms;
-    -o-transition: all linear 200ms;
-    transition: all linear 200ms;
-    background: var(--main-yellow);
-    transition-timing-function: ease-in-out;
-    }
-     
 
   .button-category:hover::after{
     background-position:right bottom;
