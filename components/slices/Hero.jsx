@@ -21,6 +21,7 @@ const Hero = (props) => {
                 <h1>
                         {hero.hero_heading.map((line, i) => (
                             <span 
+                                key={i}
                                 style={{
                                     background: colors.pageColor,
                                     color: colors.textColor
@@ -35,6 +36,7 @@ const Hero = (props) => {
                 {hero.hero_subheading.map((line, i) => (
                     <>
                     <span 
+                        key={'sub-' + i}
                         style={{
                             background: colors.pageColor,
                             color: colors.textColor

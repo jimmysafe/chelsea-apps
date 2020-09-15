@@ -4,7 +4,6 @@ import LeakBlack from '../../public/images/leak_black.svg'
 const Quote = (props) => {
     
     const quote = props.slice.primary
-    console.log(quote)
 
     const getQuoteUrl = () => {
         if(quote.quote_color === "white") return '/images/quotes.svg'
