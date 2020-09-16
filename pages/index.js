@@ -1,8 +1,7 @@
-import { getHomePage } from "../prismic/queries"
+import { getSinglePage } from "../prismic/queries"
 import Slice from '../components/Slice'
 
 const Home = ({ page }) => {
-  console.log(page)
   return (
     <div style={{ paddingTop: '120px' }}>
       {page.data.body.map((slice, i) => (
@@ -14,7 +13,7 @@ const Home = ({ page }) => {
 
 
 Home.getInitialProps = async() => {
-  const page = await getHomePage()
+  const page = await getSinglePage("homepage")
   return { page }
 }
 

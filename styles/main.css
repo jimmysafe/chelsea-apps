@@ -716,14 +716,14 @@ footer{
     position: relative;
     display: flex;
     align-items: center;
-    min-height: 100vh;
+    min-height: 80vh;
     width: 100%;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     flex-direction: column;
-    justify-content: space-around;
-    padding-top: 120px;
+    justify-content: center;
+    /* padding-top: 120px; */
 }
 
 #hero .container{

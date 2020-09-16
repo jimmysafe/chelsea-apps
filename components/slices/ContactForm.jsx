@@ -19,7 +19,7 @@ const ContactForm = () => {
         onSubmit: async(values) => {
             setSubmitting(true)
             let res = await axios.post(`${siteUrl}/api/mail`, { values })
-            console.log(res.data)
+            // console.log(res.data)
             if(res.data.success) {
                 setSubmitting(false)
                 formik.handleReset()

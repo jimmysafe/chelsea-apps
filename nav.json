@@ -1,26 +1,32 @@
 [
     {
         "name": "Home",
-        "url": ""
+        "url": "/home",
+        "href": "/[page]"
     },
     {
         "name": "Work",
-        "url": "our-work"
+        "url": "/our-work",
+        "href": "/[page]"
     },
     {
         "name": "Services",
-        "url": "services"
+        "url": "/services",
+        "href": "/[page]"
     },
     {
         "name": "About",
-        "url": "about"
+        "url": "/about",
+        "href": "/[page]"
     },
     {
         "name": "Blog",
-        "url": "blog"
+        "url": "/blog",
+        "href": "/[page]"
     },
     {
         "name": "Contact",
-        "url": "contact"
+        "url": "/contact",
+        "href": "/[page]"
     }
 ]

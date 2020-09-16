@@ -20,13 +20,13 @@ const bottomLinks = [
     }
 ]
 
-const Footer = ({ page }) => {
+const Footer = ({ bgColor, textColor }) => {
     return (
         <footer id="footer">
             <div className="container">
                 <div className="contact-tab" style={{
-                    background: page.data.page_color,
-                    color: page.data.page_text_color
+                    background: bgColor,
+                    color: textColor
                 }}>
                     <div className="tab-body">
                         <h3 className="py-3 lets-talk">Let's chat.</h3>

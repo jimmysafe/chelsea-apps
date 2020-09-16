@@ -1,8 +1,8 @@
-import Slice from '../components/Slice';
-import Seo from '../components/Seo';
-import { getSinglePage } from '../prismic/queries';
+import Slice from '../../components/Slice';
+// import Seo from '../components/Seo';
+import { getSingleService } from '../../prismic/queries';
 
-export default function Page({ page, err }) {
+export default function Service({ page, err }) {
     return (
         <>
         {/* <Seo page={page} /> */}
@@ -15,9 +15,9 @@ export default function Page({ page, err }) {
     )
 }
 
-Page.getInitialProps = async({ query, res }) => {
+Service.getInitialProps = async({ query }) => {
     try {
-        const page = await getSinglePage(query.page)
+        const page = await getSingleService(query.service)
         return { page }
     } catch(err) {
         return { err }

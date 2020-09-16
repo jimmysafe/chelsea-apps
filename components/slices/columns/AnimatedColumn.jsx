@@ -12,7 +12,10 @@ const AnimatedColumn = ({ section }) => {
                                  <div key={i}>
                                     <h3>{ item.column_title[0].text }</h3>
                                     {item.link.link_type !== "Any" &&
-                                        <Link as={linkResolver(item.link)} href={hrefResolver(item.link)}>
+                                        <Link 
+                                            as={item.link.type === 'service' ? `/services/${item.link.uid}` : linkResolver(item.link)} 
+                                            href={item.link.type === 'service' ? `/services/[service]` : hrefResolver(item.link)}
+                                        >
                                             <a>
                                                 <div className="image-link-container">
                                                     <img src={item.image.url} alt={`Chelsea Apps ${ item.image.alt }`} />
