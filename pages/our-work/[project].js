@@ -4,7 +4,6 @@ import Slice from '../../components/Slice';
 import { getSingleProject, nextLink } from '../../prismic/queries';
 
 export default function Project({ page, err, next }) {
-    console.log(next)
     return (
         <>
         {/* <Seo page={page} /> */}
@@ -26,7 +25,6 @@ Project.getInitialProps = async({ query }) => {
         const next = await nextLink('project', page.id)
         return { page, next }
     } catch(err) {
-        console.log(err)
         return { err }
     }
 }

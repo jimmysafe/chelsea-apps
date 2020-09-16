@@ -12,9 +12,12 @@ const ServicesPage = ({ page }) => {
 }
 
 
-ServicesPage.getInitialProps = async() => {
-  const page = await getSinglePage("services")
-  return { page }
+ServicesPage.getInitialProps = async({ preview = null, previewData = {} }) => {
+
+    const { ref } = previewData
+
+    const page = await getSinglePage('services', ref)
+    return { page, preview }
 }
 
 export default ServicesPage

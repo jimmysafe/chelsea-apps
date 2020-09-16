@@ -18,16 +18,28 @@ const createClientOptions = (req = null, prismicAccessToken = null) => {
 }
 
 export const linkResolver = (doc) => {
-    if (doc.type === 'page') {
+  switch(doc.type){
+    case 'page':
       return `/${doc.uid}`
-    }
-    return '/'
+    case 'service':
+      return `/services/${doc.uid}`
+    case 'project':
+      return `/our-work/${doc.uid}`
+    default:
+      return '/'
   }
+}
   
 // Additional helper function for Next/Link components
 export const hrefResolver = (doc) => {
-  if (doc.type === 'page') {
-    return '/[page]'
+  switch(doc.type){
+    case 'page':
+      return `/[page]`
+    case 'service':
+      return `/services/[service]`
+    case 'project':
+      return `/our-work/[project]`
+    default:
+      return '/[page]'
   }
-  return '/'
 }

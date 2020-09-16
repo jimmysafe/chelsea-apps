@@ -13,7 +13,7 @@ const Home = ({ page }) => {
 
 
 Home.getInitialProps = async() => {
-  const page = await getSinglePage("homepage")
+  const page = await getSinglePage('homepage')
   return { page }
 }
 

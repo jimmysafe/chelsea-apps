@@ -29,8 +29,8 @@ export const getPages = async () => {
     return allRoutes.filter(doc => doc.type === 'page')
 }
 
-export const getSinglePage = async (uid) => {
-    const page = await Client().getByUID("page", uid)
+export const getSinglePage = async (uid, ref) => {
+    const page = await Client().getByUID("page", uid, ref ? { ref } : null)
     return page
 }
 
