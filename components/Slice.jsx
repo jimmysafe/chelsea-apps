@@ -8,12 +8,24 @@ import TextField from "./slices/TextField";
 import Image from './slices/Image'
 import ImageAndText from "./slices/ImageAndText";
 import Columns from "./slices/Columns";
+import Works from "./slices/Works";
+import ThreeImageGallery from "./slices/ThreeImageGallery";
+import TechElements from "./slices/TechElements";
+import Brands from "./slices/Brands";
 
 const Slice = (props) => {
     const { slice_type } = props.slice;
 
     const sliceType = () => {
         switch(slice_type){
+            case 'brands':
+                return <Brands {...props} />
+            case 'tech_elements':
+                return <TechElements {...props} />
+            case 'three_image_gallery':
+                return <ThreeImageGallery {...props} />
+            case 'works':
+                return <Works {...props} />
             case 'columns':
                 return <Columns {...props} />
             case 'image_and_text':

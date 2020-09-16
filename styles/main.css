@@ -2201,6 +2201,11 @@ video.lazy {
     margin-bottom: 1rem!important;
 }
 
+.statistic-card {
+    display: flex;
+    align-items: center;
+}
+
 
 
 /* ------------------ MEDIA QUERIES ----------------- */
@@ -2384,6 +2389,20 @@ video.lazy {
 
 
 @media (max-width: 450px){
+
+    .statistic-card {
+        padding: 0!important;
+    }
+
+    .statistic-card img {
+        margin-right: 1rem;
+        max-width: 60px!important;
+        max-height: 60px!important;
+    }
+
+    .statistic-card h4 {
+        font-size: 31px!important;
+    }
 
     .brand-block .brand-item {
         width: 50%;
