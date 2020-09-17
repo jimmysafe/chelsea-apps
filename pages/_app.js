@@ -26,10 +26,10 @@ function MyApp({ Component, pageProps }) {
   }
 
 
-  export async function getStaticProps({ Component, ctx }) {
+  export async function getServerSideProps({ Component, ctx }) {
     let pageProps
-    if (Component.getStaticProps) {
-      pageProps = await Component.getStaticProps(ctx)
+    if (Component.getServerSideProps) {
+      pageProps = await Component.getServerSideProps(ctx)
     } 
     return {
       pageProps

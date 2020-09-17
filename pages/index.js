@@ -13,7 +13,7 @@ const Home = (props) => {
 }
 
 
-export async function getStaticProps({ preview = null, previewData = {} }) {
+export async function getServerSideProps({ preview = null, previewData = {} }) {
 
   const page = await getSinglePage('homepage', previewData)
   return {
@@ -26,3 +26,4 @@ export async function getStaticProps({ preview = null, previewData = {} }) {
 
 
 export default Home
+

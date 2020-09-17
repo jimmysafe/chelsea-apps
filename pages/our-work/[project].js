@@ -1,7 +1,7 @@
 import NextProject from '../../components/common/NextProject';
 import Slice from '../../components/Slice';
 // import Seo from '../components/Seo';
-import { getProjects, getSingleProject, nextLink } from '../../prismic/queries';
+import { getSingleProject, nextLink } from '../../prismic/queries';
 
 export default function Project({ page, err, next }) {
     return (
@@ -19,21 +19,7 @@ export default function Project({ page, err, next }) {
     )
 }
 
-
-
-export async function getStaticPaths() {
-    const data = await getProjects()
-    const paths = data.map(project => ({
-        params: { project: project.uid }
-    }))
-    return {
-      paths,
-      fallback: false
-    };
-  }
-
-
-export async function getStaticProps({ params, preview = null, previewData = {} }) {
+export async function getServerSideProps({ params, preview = null, previewData = {} }) {
     const page = await getSingleProject(params.project, previewData)
     const next = await nextLink('project', page.id)
     return {

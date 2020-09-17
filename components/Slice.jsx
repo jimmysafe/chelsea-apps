@@ -12,12 +12,15 @@ import Works from "./slices/Works";
 import ThreeImageGallery from "./slices/ThreeImageGallery";
 import TechElements from "./slices/TechElements";
 import Brands from "./slices/Brands";
+import PostContent from "./slices/PostContent";
 
 const Slice = (props) => {
     const { slice_type } = props.slice;
 
     const sliceType = () => {
         switch(slice_type){
+            case 'post_content':
+                return <PostContent {...props} />
             case 'brands':
                 return <Brands {...props} />
             case 'tech_elements':

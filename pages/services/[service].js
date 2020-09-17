@@ -1,6 +1,6 @@
 import Slice from '../../components/Slice';
 // import Seo from '../components/Seo';
-import { getSingleService, getServices } from '../../prismic/queries';
+import { getSingleService } from '../../prismic/queries';
 
 export default function Service({ page, err }) {
     return (
@@ -15,19 +15,7 @@ export default function Service({ page, err }) {
     )
 }
 
-
-export async function getStaticPaths() {
-    const data = await getServices()
-    const paths = data.map(service => ({
-        params: { service: service.uid }
-    }))
-    return {
-      paths,
-      fallback: false
-    };
-  }
-
-export async function getStaticProps({ params, preview = null, previewData = {} }) {
+export async function getServerSideProps({ params, preview = null, previewData = {} }) {
     const page = await getSingleService(params.service, previewData)
     return {
       props: {

@@ -1,69 +1,107 @@
-import { getPosts } from "../../prismic/queries"
+import { getPosts, getSinglePage } from "../../prismic/queries"
 import Link from 'next/link'
 import { hrefResolver, linkResolver } from "../../prismic/prismic-configuration"
-import LazyLoad from "react-lazyload";
-import Head from 'next/head'
-import { useEffect } from "react";
+import Hero from "../../components/slices/Hero";
+import { useEffect, useState } from "react";
 
-const BlogPage = ({ posts }) => {
+const categories = [ 'culture', 'design', 'development', 'news', 'start-ups', 'strategy' ]
+
+const BlogPage = ({ posts: allPosts, page }) => {
+
+    const lastPostBannerSlice = allPosts[0].data.body.find(el => el.slice_type === "hero_banner")
+
+    const [selectedTag, setSelectedTag] = useState('')
+    const [searchTerm, setSearchTerm] = useState('')
+    const [posts, setPosts] = useState(allPosts)
+
+    const handleCatClick = (e) => {
+        setSearchTerm('')
+        if(selectedTag === e.target.value){
+            setSelectedTag('')
+        } else {
+            setSelectedTag(e.target.value)
+        }
+    }
+
     useEffect(() => {
-        $('.lazy').Lazy(
-            {
-              placeholder: "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iOTBweCIgaGVpZ2h0PSI5MHB4IiB2aWV3Qm94PSIwIDAgOTAgOTAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDU1LjIgKDc4MTgxKSAtIGh0dHBzOi8vc2tldGNoYXBwLmNvbSAtLT4KICAgIDx0aXRsZT5ZZWxsb3cgTG9hZGVyPC90aXRsZT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGcgaWQ9IlllbGxvdy1Mb2FkZXIiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxyZWN0IGZpbGw9IiNGRkZGRkYiIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCI+PC9yZWN0PgogICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUiIGZpbGw9IiNGRUUzMTUiIHg9IjAiIHk9IjAiIHdpZHRoPSI5MCIgaGVpZ2h0PSI5MCI+PC9yZWN0PgogICAgPC9nPgo8L3N2Zz4=",
-              scrollDirection: 'vertical',
-              effect: 'fadeIn',
-              visibleOnly: true,
-              onError: function(element) {
-                  console.log('error loading ' + element.data('src'));
-              }
-            }
-        );
-    }, [])
+        if(!selectedTag){
+            setPosts(allPosts)
+        } else {
+            const filteredPosts = allPosts.filter(post => post.tags.includes(selectedTag))
+            setPosts(filteredPosts)
+        }
+    }, [selectedTag])
+
+    const handleSearch = (e) => {
+        setSearchTerm(e.target.value)
+    }
+
+    useEffect(() => {
+        if(!searchTerm){
+            setPosts(allPosts)
+        } else {
+            setSelectedTag('')
+            const filteredPosts = allPosts.filter(post => post.data.title[0].text.toLowerCase().includes(searchTerm))
+            setPosts(filteredPosts)
+        }
+    }, [searchTerm])
+
     return (
         <>
-        <Head>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.min.js"></script>
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.9/jquery.lazy.plugins.min.js"></script>
-        </Head>
-
         <div id="blog-page">
-            {/* {% for post in posts %}
-            {% if loop.first %}
-                    {% include '/components/page-hero-blog.twig' %}
-                {% endif %}
-            {% endfor %} */}
-{/* 
-            <section style=" color: #1E1E1E; padding: 3rem 0rem">
-                <div className="container d-flex  align-items-center category-section" style="justify-content: space-between; ">
+            <Link as={linkResolver(allPosts[0])} href={hrefResolver(allPosts[0])}>
+                <a>
+                    <Hero page={page} slice={lastPostBannerSlice} />
+                </a>
+            </Link>
+
+            <section style={{color: "#1E1E1E", padding: "3rem 0rem" }}>
+                <div className="container d-flex  align-items-center category-section" style={{ justifyContent: 'space-between' }}>
                     <div className="cat-wrapper">
-                            {% for categorie in categories %}
-                                <input type="button" className="cat-btn btn button-category {{categorie.slug}}" value="{{categorie.slug}}" {% if term.slug == categorie.slug %}{% endif %}>
-                            {% endfor %}
+                        {categories.map(cat => (
+                             <input 
+                                style={{ marginRight: '0.4rem' }}
+                                key={cat}
+                                type="button" 
+                                className={`cat-btn btn button-category ${selectedTag === cat ? 'cat-active' : ''}` }
+                                value={cat}
+                                onClick={(e) => handleCatClick(e)}
+                            />
+                        ))}
                     </div>
                     <div className="search-wrapper">
-                            <div className="search-wrapper">
-                                {{function('get_search_form')}}
-                            </div>
+                        <div className="search-wrapper">
+                            <form role="search" method="get" id="searchform" className="searchform" action="https://chelsea-apps.com/">
+                                <div>
+                                    <label className="screen-reader-text" for="s">Search for:</label>
+                                    <input 
+                                        type="text" 
+                                        name="s"
+                                        id="s"
+                                        value={searchTerm}
+                                        onChange={handleSearch}
+                                        className="search-field" 
+                                        placeholder="search"  
+                                    />
+                                    <img className="search-pic" src="/app/themes/starter-theme/images/Search.svg" />
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </section> */}
+            </section> 
+
+
 
             <div id="all-posts" className="container cat-posts align-items-center container-blog">
                 {posts.map(post => {
                     const banner = post.data.body.find(el => el.slice_type === 'hero_banner')
                     return (
-                        // <LazyLoad
-                        //     key={post.id}
-                        //     height={200}
-                        //     // placeholder={<PlaceholderComponent />}
-                        //     offset={[-200, 0]}
-                        // >
                         <Link as={linkResolver(post)} href={hrefResolver(post)}>
                             <a>
                                 <div className="thumbnail">  
                                     <div className="cropper">
-                                        <div className="cropper-bg lazy" data-src={banner.primary.image.url}></div>
+                                        <div className="cropper-bg" style={{ backgroundImage: `url( ${banner.primary.image.url} )` }}></div>
                                         <div className="title-tease"><h3 className="title-test-blog">{banner.primary.hero_heading[0].text}</h3></div>
                                         <div className="author-tease"><p>Jimmy Grimble</p></div>
                                         <div className="bottom-blog"><p>Date Here</p></div>
@@ -71,7 +109,6 @@ const BlogPage = ({ posts }) => {
                                 </div>
                             </a>  
                         </Link>
-                        // </LazyLoad>
                     )
                 })}
               
@@ -90,11 +127,13 @@ const BlogPage = ({ posts }) => {
     )
 }
 
-export async function getStaticProps({ params, preview = null, previewData = {} }) {
+export async function getServerSideProps({ params, preview = null, previewData = {} }) {
     const posts = await getPosts()
+    const page = await getSinglePage('blog', previewData)
     return {
         props: {
             posts,
+            page,
             preview
         }
     }

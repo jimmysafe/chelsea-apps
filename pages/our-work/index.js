@@ -66,7 +66,7 @@ const WorkPage = ({ projects }) => {
 
 
 
-export async function getStaticProps({ preview = null, previewData = {} }) {
+export async function getServerSideProps({ preview = null, previewData = {} }) {
 
     const page = await getSinglePage('our-work', previewData)
     const projects = await getProjects()
