@@ -35,7 +35,7 @@ const Footer = ({ bgColor, textColor }) => {
                         <p style={{ fontWeight: 100 }}> discuss. </p>
                     </div>
                     <div className="tab-footer text-center">
-                        <Link as={`/contact`} href="/[page]">
+                        <Link href="/contact">
                             <h3>Contact us</h3>
                         </Link>
                     </div>

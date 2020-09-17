@@ -551,6 +551,9 @@ body{
 .blck {
     background-color: var(--main-white);
 }
+.bg-white-quote {
+    background-color: #1E1E1E!important;
+}
 .blck-black {
     background-color: var(--main-black);
     color: var(--main-white);

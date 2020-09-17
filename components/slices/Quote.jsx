@@ -11,7 +11,7 @@ const Quote = (props) => {
 
     return (
         <div style={{ position: "relative" }}>
-            <section className={`quote ${quote.quote_color === "white" ? "blck" : ""}`}>
+            <section className={`quote ${quote.quote_color === "white" ? "blck" : "bg-white-quote"}`}>
                 <div className="container " style={{ position: "relative" }}>
                    
                         <img src={getQuoteUrl()} alt="Quote" style={{ position: 'absolute', top: 0, left: '100px' }} />

@@ -1,4 +1,3 @@
-import ContactForm from "./slices/ContactForm";
 import Hero from "./slices/Hero";
 import Offices from "./slices/Offices";
 import Parallax from "./slices/Parallax";
@@ -47,8 +46,6 @@ const Slice = (props) => {
                 return <Quote {...props} />
             case 'hero_banner':
                 return <Hero {...props} />
-            case 'contact_form':
-                return <ContactForm {...props} />
             default:
                 return null
         }

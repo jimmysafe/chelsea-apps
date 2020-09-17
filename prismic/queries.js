@@ -38,16 +38,6 @@ export const getSingleProject = async (uid, previewData) => {
   return page
 }
 
-export const nextLink = async(docType, id) => {
-  const next = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date]'})
-  return next.results
-}
-
-export const prevLink = async(docType, id) => {
-  const prev = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date desc]'})
-  return prev.results
-}
-
 
 // SERVICES
 
@@ -75,3 +65,13 @@ export const getSinglePost = async (uid, previewData) => {
   return post
 }
 
+
+export const nextLink = async(docType, id) => {
+  const next = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date]'})
+  return next.results
+}
+
+export const prevLink = async(docType, id) => {
+  const prev = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date desc]'})
+  return prev.results
+}

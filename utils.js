@@ -1,6 +1,7 @@
 export const siteUrl = process.env.NODE_ENV === 'development' ? 'https://localhost:3000' : 'https://chantalciaffardini.com'
 
 export const getBgColor = (color, pageColors) => {
+
     switch(color){
         case 'page color':
             return pageColors.pageColor

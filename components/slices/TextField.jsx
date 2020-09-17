@@ -6,7 +6,7 @@ const TextField = (props) => {
     const field = props.slice.primary
     const colors = {
         textColor: props.page.data.page_text_color,
-        pageColor: props.page.data.page_color
+        pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
     }
 
     return (

@@ -2,6 +2,7 @@ import nav from '../nav.json'
 import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
+import Logo from './common/Logo'
 
 const Nav = ({ bgColor, textColor }) => {
     const router = useRouter()
@@ -32,6 +33,8 @@ const Nav = ({ bgColor, textColor }) => {
                 return customLink('/services')
             case '/blog':
                 return customLink('/blog')
+            case '/contact':
+                return customLink('/contact')
             default:
                 return (
                     <Link as={item.url} href={item.href} key={item.name}>
@@ -54,15 +57,17 @@ const Nav = ({ bgColor, textColor }) => {
                 <div className="wrapper" style={{zIndex: 100000}}>
                     <nav className="navbar">
                         {textColor === "white" ? (
-                            <a className="navbar-brand" href="/">
-                                {/* white logo */}
-                                <img src="/images/x.svg" alt="white logo"/>
-                            </a>
+                            <Link href="/">
+                                <a className="navbar-brand">
+                                    <Logo white />
+                                </a>
+                            </Link>
                         ) : (
-                            <a className="navbar-brand" href="/">
-                                {/* black logo */}
-                                <img src="/images/x.svg" alt="black logo"/>
-                            </a>
+                            <Link href="/">
+                                <a className="navbar-brand">
+                                    <Logo black />
+                                </a>
+                            </Link>
                         )
                         }
                     

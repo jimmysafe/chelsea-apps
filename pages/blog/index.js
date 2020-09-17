@@ -48,7 +48,7 @@ const BlogPage = ({ posts: allPosts, page }) => {
 
     return (
         <>
-        <div id="blog-page">
+        <div id="blog-page"  style={{ background: '#1E1E1E' }}>
             <Link as={linkResolver(allPosts[0])} href={hrefResolver(allPosts[0])}>
                 <a>
                     <Hero page={page} slice={lastPostBannerSlice} />
@@ -73,7 +73,7 @@ const BlogPage = ({ posts: allPosts, page }) => {
                         <div className="search-wrapper">
                             <form role="search" method="get" id="searchform" className="searchform" action="https://chelsea-apps.com/">
                                 <div>
-                                    <label className="screen-reader-text" for="s">Search for:</label>
+                                    <label className="screen-reader-text" htmlFor="s">Search for:</label>
                                     <input 
                                         type="text" 
                                         name="s"
@@ -97,7 +97,7 @@ const BlogPage = ({ posts: allPosts, page }) => {
                 {posts.map(post => {
                     const banner = post.data.body.find(el => el.slice_type === 'hero_banner')
                     return (
-                        <Link as={linkResolver(post)} href={hrefResolver(post)}>
+                        <Link as={linkResolver(post)} href={hrefResolver(post)} key={post.id}>
                             <a>
                                 <div className="thumbnail">  
                                     <div className="cropper">

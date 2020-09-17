@@ -11,8 +11,6 @@ const PostContent = ({ slice }) => {
         textColor: '#1E1E1E'
     }
 
-    console.log(items)
-
     return (
         <>
         {items.map(item => (
