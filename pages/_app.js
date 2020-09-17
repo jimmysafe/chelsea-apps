@@ -9,15 +9,15 @@ import Layout from '../components/Layout'
 
 function MyApp({ Component, pageProps }) {
 
-    useEffect(() => {
-      window.prismic = { endpoint: 'https://chelseaapps.cdn.prismic.io/api/v2' }
-    }, [])
+    // useEffect(() => {
+    //   window.prismic = { endpoint: 'https://chelseaapps.cdn.prismic.io/api/v2' }
+    // }, [])
 
     return (
       <>
-      <Head>
+      {/* <Head>
         <script type="text/javascript" src="https://static.cdn.prismic.io/prismic.min.js?new=true"></script>
-      </Head>
+      </Head> */}
         <Layout {...pageProps}>
             <Component {...pageProps} />
         </Layout>
@@ -26,18 +26,15 @@ function MyApp({ Component, pageProps }) {
   }
 
 
-MyApp.getInitialProps = async({ Component, ctx }) => {
-
+  export async function getStaticProps({ Component, ctx }) {
     let pageProps
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx)
+    if (Component.getStaticProps) {
+      pageProps = await Component.getStaticProps(ctx)
     } 
-
     return {
-        pageProps
+      pageProps
     }
-}
-
+  }
 
   
   export default MyApp

@@ -29,7 +29,8 @@ export const getPages = async () => {
     return allRoutes.filter(doc => doc.type === 'page')
 }
 
-export const getSinglePage = async (uid, ref) => {
+export const getSinglePage = async (uid, previewData) => {
+    const { ref } = previewData
     const page = await Client().getByUID("page", uid, ref ? { ref } : null)
     return page
 }
@@ -42,15 +43,22 @@ export const getProjects = async () => {
   return allRoutes.filter(doc => doc.type === 'project')
 }
 
-export const getSingleProject = async (uid) => {
-  const page = await Client().getByUID("project", uid)
+export const getSingleProject = async (uid, previewData) => {
+  const { ref } = previewData
+  const page = await Client().getByUID("project", uid, ref ? { ref } : null)
   return page
 }
 
 // SERVICES
 
-export const getSingleService = async (uid) => {
-  const page = await Client().getByUID("service", uid)
+export const getServices = async () => {
+  const allRoutes = await fetchDocs() 
+  return allRoutes.filter(doc => doc.type === 'service')
+}
+
+export const getSingleService = async (uid, previewData) => {
+  const { ref } = previewData
+  const page = await Client().getByUID("service", uid, ref ? { ref } : null)
   return page
 }
 

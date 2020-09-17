@@ -65,10 +65,18 @@ const WorkPage = ({ projects }) => {
 }
 
 
-WorkPage.getInitialProps = async() => {
-    const page = await getSinglePage("our-work")
+
+export async function getStaticProps({ preview = null, previewData = {} }) {
+
+    const page = await getSinglePage('our-work', previewData)
     const projects = await getProjects()
-    return { projects, page }
-}
+    return {
+      props: {
+        page,
+        projects,
+        preview
+      }
+    }
+  }
 
 export default WorkPage

@@ -1,6 +1,6 @@
 import Slice from '../components/Slice';
 import Seo from '../components/Seo';
-import { getSinglePage } from '../prismic/queries';
+import { getPages, getSinglePage } from '../prismic/queries';
 
 export default function Page({ page, err }) {
     return (
@@ -15,11 +15,25 @@ export default function Page({ page, err }) {
     )
 }
 
-Page.getInitialProps = async({ query, res }) => {
-    try {
-        const page = await getSinglePage(query.page)
-        return { page }
-    } catch(err) {
-        return { err }
+
+export async function getStaticPaths() {
+    const data = await getPages()
+    const paths = data.map(page => ({
+        params: { page: page.uid }
+    }))
+    return {
+      paths,
+      fallback: false
+    };
+  }
+
+
+export async function getStaticProps({ params, preview = null, previewData = {} }) {
+    const page = await getSinglePage(params.page, previewData)
+    return {
+      props: {
+        page,
+        preview
+      }
     }
-}
+  }
