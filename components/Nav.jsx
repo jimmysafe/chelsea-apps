@@ -30,6 +30,8 @@ const Nav = ({ bgColor, textColor }) => {
                 return customLink('/our-work')
             case '/services':
                 return customLink('/services')
+            case '/blog':
+                return customLink('/blog')
             default:
                 return (
                     <Link as={item.url} href={item.href} key={item.name}>

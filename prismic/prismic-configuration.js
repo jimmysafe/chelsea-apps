@@ -25,6 +25,8 @@ export const linkResolver = (doc) => {
       return `/services/${doc.uid}`
     case 'project':
       return `/our-work/${doc.uid}`
+    case 'post':
+      return `/blog/${doc.uid}`
     default:
       return '/'
   }
@@ -39,6 +41,8 @@ export const hrefResolver = (doc) => {
       return `/services/[service]`
     case 'project':
       return `/our-work/[project]`
+    case 'post':
+      return `/blog/[post]`
     default:
       return '/[page]'
   }

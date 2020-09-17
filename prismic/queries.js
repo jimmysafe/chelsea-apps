@@ -10,17 +10,6 @@ async function fetchDocs(page = 1, routes = []) {
   return [...new Set(allRoutes)];
 };
 
-// POSTS
-
-export const getPosts = async () => {
-  const allRoutes = await fetchDocs()
-  return allRoutes.filter(doc => doc.type === 'blog_post').slice(0, 5)
-}
-
-export const getSinglePost = async (uid) => {
-    const post = await Client().getByUID("blog_post", uid)
-    return post
-}
 
 // PAGES
 
@@ -49,6 +38,17 @@ export const getSingleProject = async (uid, previewData) => {
   return page
 }
 
+export const nextLink = async(docType, id) => {
+  const next = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date]'})
+  return next.results
+}
+
+export const prevLink = async(docType, id) => {
+  const prev = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date desc]'})
+  return prev.results
+}
+
+
 // SERVICES
 
 export const getServices = async () => {
@@ -62,12 +62,16 @@ export const getSingleService = async (uid, previewData) => {
   return page
 }
 
-export const nextLink = async(docType, id) => {
-  const next = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date]'})
-  return next.results
+// POSTS
+
+export const getPosts = async () => {
+  const allRoutes = await fetchDocs() 
+  return allRoutes.filter(doc => doc.type === 'post')
 }
 
-export const prevLink = async(docType, id) => {
-  const prev = await Client().query(Prismic.Predicates.at('document.type', docType), { pageSize : 1 , after : `${id}`, orderings: '[document.first_publication_date desc]'})
-  return prev.results
+export const getSinglePost = async (uid, previewData) => {
+  const { ref } = previewData
+  const post = await Client().getByUID("post", uid, ref ? { ref } : null)
+  return post
 }
+

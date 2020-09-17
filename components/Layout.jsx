@@ -10,9 +10,11 @@ const Layout = (props) => {
     return (
         <>
         <Nav textColor={textColor} bgColor={bgColor}/>
-        <main>
-            {props.children}
-        </main>
+        <section id="content" role="main" className="content-wrapper">
+            <div className="wrapper">
+                {props.children}
+            </div>
+        </section>
         <Footer textColor={textColor} bgColor={bgColor}/>
         </>
     )
