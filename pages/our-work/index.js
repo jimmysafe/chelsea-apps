@@ -1,42 +1,40 @@
 import { getProjects, getSinglePage } from "../../prismic/queries"
-import Head from 'next/head'
 import Link from 'next/link'
+import { Parallax } from 'react-parallax';
 
 const WorkPage = ({ projects }) => {
   return (
       <>
-    <Head>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.5.0/parallax.min.js" />
-    </Head>
     <div style={{ paddingTop: '70px' }} className="work-page hide-mobile">
         {projects.map((project, i) => {
             const banner = project.data.body.find(el => el.slice_type === 'hero_banner')
             return (
                 <Link as={`/our-work/${project.uid}`} href="/our-work/[project]" key={project.id}>
                 <a>
-                    <div 
-                        className="parallax-window lazy"
-                        data-parallax="scroll" 
-                        data-image-src={ banner.primary.image.url }
+                    <Parallax
+                        bgImage={banner.primary.image.url}
+                        bgImageAlt={banner.primary.image.alt}
+                        strength={300}
                     >
-                        <div className="container" style={{ display: 'flex', flexDirection: 'column' }}>
-                            {i === 0 &&
-                                <div className="revised-h1-box">
-                                    <h1 className="revised-h1">Our Work</h1>
+                        <div className="parallax-window">
+                            <div className="container" style={{ display: 'flex', flexDirection: 'column' }}>
+                                {i === 0 &&
+                                    <div className="revised-h1-box">
+                                        <h1 className="revised-h1">Our Work</h1>
+                                    </div>
+                                }
+                                <h2>{ banner.primary.hero_heading[0].text }</h2>
+                                <div className="sub-head mt-4" style={{ display: 'flex', flexDirection: 'column' }}>
+                                    <p>{ banner.primary.hero_subheading[0].text }</p>
                                 </div>
-                            }
-                            <h2>{ banner.primary.hero_heading[0].text }</h2>
-                            <div className="sub-head mt-4" style={{ display: 'flex', flexDirection: 'column' }}>
-                                <p>{ banner.primary.hero_subheading[0].text }</p>
-                            </div>
-                            <div className="mt-4" style={{ position: 'relative', zIndex: 1 }}>
-                                <article style={{ cursor: "pointer" }}>
-                                    <span>view work</span>
-                                </article>
+                                <div className="mt-4" style={{ position: 'relative', zIndex: 1 }}>
+                                    <article style={{ cursor: "pointer" }}>
+                                        <span>view work</span>
+                                    </article>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Parallax>
                 </a>
                 
                 </Link>
