@@ -5,7 +5,7 @@ import { checkIsNotFound } from '../../utils';
 
 const Post = ({ page, next, prev }) => {
     return (
-        <div className="page-content">
+        <div className="page-content post-page">
             {page.data.body.map((slice, i) => (
                 <Slice key={i} slice={slice} page={page}/>
             ))}

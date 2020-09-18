@@ -731,7 +731,7 @@ span.typewriter-text:last-child{
     }
     #hero h1,     
     #hero #conatiner-home-hero h2{
-        font-size: 42.0px;
+        font-size: 42.0px!important;
         letter-spacing: .18px;
         line-height: 46.0px;
     }
