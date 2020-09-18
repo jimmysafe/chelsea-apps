@@ -20,8 +20,8 @@ const Image = ({ slice }) => {
 
     if(isLink){
         return (
-        <section class="py-5" style={{background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div class="container" style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <section className="py-5" style={{background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="container" style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Link as={linkResolver(image.link)} href={hrefResolver(image.link)}>
                     <a style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <img src={image.image.url} style={{maxWidth: getImageSize() }} alt={image.image.alt} />
@@ -32,8 +32,8 @@ const Image = ({ slice }) => {
         )
     } else {
         return (
-        <section class="py-5" style={{background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <div class="container" style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <section className="py-5" style={{background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="container" style={{display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={image.image.url} style={{maxWidth: getImageSize() }} alt={image.image.alt} />
             </div>
         </section> 

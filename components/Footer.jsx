@@ -1,5 +1,6 @@
 import nav from '../nav.json'
 import Link from 'next/link'
+import FooterVideo from './common/FooterVideo'
 
 const bottomLinks = [
     {
@@ -22,6 +23,8 @@ const bottomLinks = [
 
 const Footer = ({ bgColor, textColor }) => {
     return (
+        <>
+        <FooterVideo />
         <footer id="footer">
             <div className="container">
                 <div className="contact-tab" style={{
@@ -47,13 +50,13 @@ const Footer = ({ bgColor, textColor }) => {
                     </div>
                     <div className="social-links">
                         <a href="https://twitter.com/ChelseaApps ">
-                            <img src="/images/x.svg" alt="asd"/>
+                            <img src="/images/twitter.svg" alt="asd"/>
                         </a>
                         <a href="https://www.linkedin.com/company/1270750/admin/ ">
-                            <img src="/images/x.svg" alt="asd"/>
+                            <img src="/images/linkedin.svg" alt="asd"/>
                         </a>
                         <a href="https://www.instagram.com/chelsea_apps_/">
-                            <img src="/images/x.svg" alt="asd"/>
+                            <img src="/images/instagram.svg" alt="asd"/>
                         </a>
                     </div>
                 </section>
@@ -110,6 +113,7 @@ const Footer = ({ bgColor, textColor }) => {
                 </div>
             </div>
         </footer>
+        </>
     )
 }
 
