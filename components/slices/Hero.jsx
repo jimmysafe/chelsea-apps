@@ -13,8 +13,7 @@ const Hero = (props) => {
             id="hero" 
             style={{ 
                 backgroundImage: `url(${hero.image.url})`,
-                justifyContent: "center!important",
-                minHeight: "80vh!important"
+                justifyContent: "center!important"
             }}
         >
             <div className="container mb-4">

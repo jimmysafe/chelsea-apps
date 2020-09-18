@@ -2220,6 +2220,9 @@ video.lazy {
     font-size: 74px;
 }
 
+.page-homepage #hero {
+    min-height: 100vh!important;
+}
 
 
 /* ------------------ MEDIA QUERIES ----------------- */

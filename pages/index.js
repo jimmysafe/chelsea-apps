@@ -5,7 +5,7 @@ import { checkIsNotFound } from "../utils"
 const Home = (props) => {
   const page = props.page
   return (
-    <div style={{ paddingTop: '120px' }}>
+    <div className="page-homepage">
       {page.data.body.map((slice, i) => (
         <Slice key={i} slice={slice} page={page}/>
       ))}
