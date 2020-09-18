@@ -1,4 +1,4 @@
-import React from 'react'
+import Seo from './Seo'
 import Footer from './Footer'
 import Nav from './Nav'
 
@@ -9,6 +9,7 @@ const Layout = (props) => {
 
     return (
         <>
+        <Seo page={props.page}/>
         <Nav textColor={textColor} bgColor={bgColor}/>
         <section id="content" role="main" className="content-wrapper">
             <div className="wrapper">

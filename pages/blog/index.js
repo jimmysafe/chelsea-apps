@@ -47,7 +47,6 @@ const BlogPage = ({ posts: allPosts, page }) => {
     }, [searchTerm])
 
     return (
-        <>
         <div id="blog-page"  style={{ background: '#1E1E1E' }}>
             <Link as={linkResolver(allPosts[0])} href={hrefResolver(allPosts[0])}>
                 <a>
@@ -123,7 +122,6 @@ const BlogPage = ({ posts: allPosts, page }) => {
                 </div>
             {% endfor %} */}
         </div>
-        </>
     )
 }
 

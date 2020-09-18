@@ -1,19 +1,15 @@
 import PostBottomNavigation from '../../components/common/PostBottomNavigation';
 import Slice from '../../components/Slice';
-// import Seo from '../components/Seo';
 import { getSinglePost, nextLink, prevLink } from "../../prismic/queries"
 
 const Post = ({ page, next, prev }) => {
     return (
-        <>
-        {/* <Seo page={page} /> */}
         <div className="page-content">
             {page.data.body.map((slice, i) => (
                 <Slice key={i} slice={slice} page={page}/>
             ))}
-        <PostBottomNavigation prev={prev} next={next} />
+          <PostBottomNavigation prev={prev} next={next} />
         </div>
-        </>
     )
 }
 

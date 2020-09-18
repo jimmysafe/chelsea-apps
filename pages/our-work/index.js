@@ -2,9 +2,9 @@ import { getProjects, getSinglePage } from "../../prismic/queries"
 import Link from 'next/link'
 import { Parallax } from 'react-parallax';
 
-const WorkPage = ({ projects }) => {
+const WorkPage = ({ projects, page }) => {
   return (
-      <>
+    <>
     <div style={{ paddingTop: '70px' }} className="work-page hide-mobile">
         {projects.map((project, i) => {
             const banner = project.data.body.find(el => el.slice_type === 'hero_banner')

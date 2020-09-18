@@ -1,12 +1,9 @@
 import NextProject from '../../components/common/NextProject';
 import Slice from '../../components/Slice';
-import Seo from '../../components/Seo';
 import { getSingleProject, nextLink } from '../../prismic/queries';
 
 export default function Project({ page, err, next }) {
     return (
-        <>
-        <Seo page={page} />
         <div className="page-content">
             {page.data.body.map((slice, i) => (
                 <Slice key={i} slice={slice} page={page}/>
@@ -15,7 +12,6 @@ export default function Project({ page, err, next }) {
                 <NextProject page={page} nextLink={next[0].uid}/>
             }
         </div>
-        </>
     )
 }
 
