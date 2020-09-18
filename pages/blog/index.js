@@ -3,11 +3,11 @@ import Link from 'next/link'
 import { hrefResolver, linkResolver } from "../../prismic/prismic-configuration"
 import Hero from "../../components/slices/Hero";
 import { useEffect, useState } from "react";
-
+import { Client } from '../../prismic/prismic-configuration'
+import Prismic from 'prismic-javascript'
 const categories = [ 'culture', 'design', 'development', 'news', 'start-ups', 'strategy' ]
 
 const BlogPage = ({ posts: allPosts, page }) => {
-
     const lastPostBannerSlice = allPosts[0].data.body.find(el => el.slice_type === "hero_banner")
 
     const [selectedTag, setSelectedTag] = useState('')
@@ -114,18 +114,11 @@ const BlogPage = ({ posts: allPosts, page }) => {
            
             </div>
 
-            {/* {% for catPosts in cats %}
-                <div id="{{ catPosts.category }}" className="container cat-posts  align-items-center container-blog" style="display:none">
-                    {% for post in catPosts.posts %}
-                        {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
-                    {% endfor %}
-                </div>
-            {% endfor %} */}
         </div>
     )
 }
 
-export async function getServerSideProps({ params, preview = null, previewData = {} }) {
+export async function getServerSideProps({ preview = null, previewData = {} }) {
     const posts = await getPosts()
     const page = await getSinglePage('blog', previewData)
     return {

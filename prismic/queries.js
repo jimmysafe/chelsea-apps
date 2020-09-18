@@ -55,8 +55,8 @@ export const getSingleService = async (uid, previewData) => {
 // POSTS
 
 export const getPosts = async () => {
-  const allRoutes = await fetchDocs() 
-  return allRoutes.filter(doc => doc.type === 'post')
+  const allPosts = await Client().query(Prismic.Predicates.at('document.type', 'post'), { orderings: '[document.first_publication_date desc]'})
+  return allPosts.results
 }
 
 export const getSinglePost = async (uid, previewData) => {
