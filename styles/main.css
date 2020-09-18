@@ -729,7 +729,7 @@ footer{
     background-repeat: no-repeat;
     flex-direction: column;
     justify-content: center;
-    /* padding-top: 120px; */
+    padding-top: 120px;
 }
 
 #hero .container{

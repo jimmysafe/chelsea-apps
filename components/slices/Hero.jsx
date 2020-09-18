@@ -35,14 +35,14 @@ const Hero = (props) => {
             <div id="container-target" className="container" style={{ lineHeight: 1 }}>
                 {hero.hero_subheading.map(line => (
                     <Fragment key={line.text}>
-                    <span 
+                    <p 
                         style={{
                             background: colors.pageColor,
                             color: colors.textColor
                         }}
                     >
                         { line.text }
-                    </span>
+                    </p>
                     <br/>
                     </Fragment>
                 ))}
