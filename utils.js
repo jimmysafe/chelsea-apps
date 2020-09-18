@@ -26,3 +26,13 @@ export const getTextColor = (color, pageColors) => {
             return ""
     }
 } 
+
+export const checkIsNotFound = (page, res) => {
+    if(!page && res){
+        res.writeHead(302, {
+            Location: '/404'
+        });
+        res.end();
+        return
+    }
+}

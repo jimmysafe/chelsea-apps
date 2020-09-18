@@ -1,6 +1,7 @@
 import { getSinglePage } from '../prismic/queries'
 import Slice from '../components/Slice'
 import ContactForm from '../components/common/ContactForm'
+import { checkIsNotFound } from '../utils'
 
 const Contact = ({ page }) => {
     return (
@@ -13,9 +14,10 @@ const Contact = ({ page }) => {
     )
 }
 
-export async function getServerSideProps({ preview = null, previewData = {} }) {
+export async function getServerSideProps({ res, preview = null, previewData = {} }) {
 
     const page = await getSinglePage('contact', previewData)
+    checkIsNotFound(page, res)
     return {
       props: {
         page,

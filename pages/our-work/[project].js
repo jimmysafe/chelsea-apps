@@ -1,6 +1,7 @@
 import NextProject from '../../components/common/NextProject';
 import Slice from '../../components/Slice';
 import { getSingleProject, nextLink } from '../../prismic/queries';
+import { checkIsNotFound } from '../../utils';
 
 export default function Project({ page, err, next }) {
     return (
@@ -15,8 +16,9 @@ export default function Project({ page, err, next }) {
     )
 }
 
-export async function getServerSideProps({ params, preview = null, previewData = {} }) {
+export async function getServerSideProps({ res, params, preview = null, previewData = {} }) {
     const page = await getSingleProject(params.project, previewData)
+    checkIsNotFound(page, res)
     const next = await nextLink('project', page.id)
     return {
       props: {

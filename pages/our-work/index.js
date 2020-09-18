@@ -1,6 +1,7 @@
 import { getProjects, getSinglePage } from "../../prismic/queries"
 import Link from 'next/link'
 import { Parallax } from 'react-parallax';
+import { checkIsNotFound } from "../../utils";
 
 const WorkPage = ({ projects, page }) => {
   return (
@@ -64,9 +65,10 @@ const WorkPage = ({ projects, page }) => {
 
 
 
-export async function getServerSideProps({ preview = null, previewData = {} }) {
+export async function getServerSideProps({ res, preview = null, previewData = {} }) {
 
     const page = await getSinglePage('our-work', previewData)
+    checkIsNotFound(page, res)
     const projects = await getProjects()
     return {
       props: {

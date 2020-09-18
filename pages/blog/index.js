@@ -5,6 +5,7 @@ import Hero from "../../components/slices/Hero";
 import { useEffect, useState } from "react";
 import { Client } from '../../prismic/prismic-configuration'
 import Prismic from 'prismic-javascript'
+import { checkIsNotFound } from "../../utils";
 const categories = [ 'culture', 'design', 'development', 'news', 'start-ups', 'strategy' ]
 
 const BlogPage = ({ posts: allPosts, page }) => {
@@ -118,9 +119,10 @@ const BlogPage = ({ posts: allPosts, page }) => {
     )
 }
 
-export async function getServerSideProps({ preview = null, previewData = {} }) {
-    const posts = await getPosts()
+export async function getServerSideProps({ res, preview = null, previewData = {} }) {
     const page = await getSinglePage('blog', previewData)
+    checkIsNotFound(page, res)
+    const posts = await getPosts()
     return {
         props: {
             posts,

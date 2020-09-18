@@ -1,6 +1,7 @@
 import PostBottomNavigation from '../../components/common/PostBottomNavigation';
 import Slice from '../../components/Slice';
 import { getSinglePost, nextLink, prevLink } from "../../prismic/queries"
+import { checkIsNotFound } from '../../utils';
 
 const Post = ({ page, next, prev }) => {
     return (
@@ -13,8 +14,9 @@ const Post = ({ page, next, prev }) => {
     )
 }
 
-export async function getServerSideProps({ params, preview = null, previewData = {} }) {
+export async function getServerSideProps({ res, params, preview = null, previewData = {} }) {
     const page = await getSinglePost(params.post, previewData)
+    checkIsNotFound(page, res)
     const next = await nextLink('post', page.id)
     const prev = await prevLink('post', page.id)
     return {

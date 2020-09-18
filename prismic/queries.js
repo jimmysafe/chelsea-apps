@@ -21,6 +21,7 @@ export const getPages = async () => {
 export const getSinglePage = async (uid, previewData) => {
     const { ref } = previewData
     const page = await Client().getByUID("page", uid, ref ? { ref } : null)
+    if(!page) return null
     return page
 }
 

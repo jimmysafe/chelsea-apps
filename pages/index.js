@@ -1,5 +1,6 @@
 import { getSinglePage } from "../prismic/queries"
 import Slice from '../components/Slice'
+import { checkIsNotFound } from "../utils"
 
 const Home = (props) => {
   const page = props.page
@@ -13,9 +14,9 @@ const Home = (props) => {
 }
 
 
-export async function getServerSideProps({ preview = null, previewData = {} }) {
-
+export async function getServerSideProps({ res, preview = null, previewData = {} }) {
   const page = await getSinglePage('homepage', previewData)
+  checkIsNotFound(page, res)
   return {
     props: {
       page,
