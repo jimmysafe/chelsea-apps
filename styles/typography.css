@@ -321,7 +321,7 @@ address{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     width: 16.5em; 
     margin: 2em 1em;
     text-align: left!important;
@@ -355,6 +355,7 @@ address{
     background-image: linear-gradient(to right,black 50%,#FEE315 50%);
     background-size: 200% 100%;
     background-position: left bottom;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -374,7 +375,7 @@ address{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     margin: 2em 1em;
     position: relative;
   }
@@ -762,12 +763,10 @@ span.typewriter-text:last-child{
     .hero-subheading{
         display: inline!important;
         margin-left: 10px;
-        width: 90%;
     }
     .hero-subheading > p{
         display: inline!important;
         margin-left: 10px;
-        width: 90%;
     }
     .parallax-window .container p{
         display: inline-block;

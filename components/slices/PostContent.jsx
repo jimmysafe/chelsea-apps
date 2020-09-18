@@ -13,8 +13,10 @@ const PostContent = ({ slice }) => {
 
     return (
         <>
-        {items.map(item => (
-            <div className="post-section-container"
+        {items.map((item, i) => (
+            <div 
+                key={i}
+                className="post-section-container"
                 style={{
                     position: 'relative',
                     padding: '3rem 0',
@@ -24,7 +26,7 @@ const PostContent = ({ slice }) => {
             >
                 <div className="container">
                     <div className="post-section-content">
-                        <RichText render={item.post_content}/>
+                        <RichText render={item.post_content} linkResolver={linkResolver} />
                     </div>
                 </div>
                 <Leak color={item.post_section_color} leak={item.leak}/>

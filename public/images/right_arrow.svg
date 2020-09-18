@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="18px" viewBox="0 0 12 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>Down Arrow</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Finished-Pages" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home/Mobile" transform="translate(-331.000000, -3510.000000)" fill="#1E1E1E">
+            <g id="Map_06" transform="translate(0.000000, 2963.000000)">
+                <g id="London" transform="translate(0.000000, 527.000000)">
+                    <path d="M337,23.0103936 L337.010007,23 L339.554009,25.6422018 L339.544002,25.6525954 L346,32.3577982 L343.455998,35 L337,28.2947973 L330.544002,35 L328,32.3577982 L334.455998,25.6525954 L334.445991,25.6422018 L336.989993,23 L337,23.0103936 Z" id="Down-Arrow" transform="translate(337.000000, 29.000000) rotate(-270.000000) translate(-337.000000, -29.000000) "></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

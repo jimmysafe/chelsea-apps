@@ -83,7 +83,7 @@ const BlogPage = ({ posts: allPosts, page }) => {
                                         className="search-field" 
                                         placeholder="search"  
                                     />
-                                    <img className="search-pic" src="/app/themes/starter-theme/images/Search.svg" />
+                                    <img className="search-pic" src="images/search.svg" />
                                 </div>
                             </form>
                         </div>

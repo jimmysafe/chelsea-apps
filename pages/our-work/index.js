@@ -5,10 +5,10 @@ import Link from 'next/link'
 const WorkPage = ({ projects }) => {
   return (
       <>
-      <Head>
+    <Head>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax.js/1.5.0/parallax.min.js" />
-      </Head>
+    </Head>
     <div style={{ paddingTop: '70px' }} className="work-page hide-mobile">
         {projects.map((project, i) => {
             const banner = project.data.body.find(el => el.slice_type === 'hero_banner')

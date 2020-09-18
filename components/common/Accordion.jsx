@@ -7,21 +7,21 @@ const sites = [
       addr: "Telephone House, Bournemouth, BH1 3NE",
       email: "bournemouth@chelsea-apps.com",
       tel: "+ 020 8057 8878",
-      imgUrl: "https://cdn.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://chelsea-apps.com/app/themes/starter-theme/images/chelsea_apps_bournemouth_map.png"
+      imgUrl: "/images/bournemouth.png"
     },
     {
       headline: "London Office",
       addr: "Telephone House, Bournemouth, BH1 3NE",
       email: "bournemouth@chelsea-apps.com",
       tel: "+ 020 8057 8878",
-      imgUrl: "https://cdn.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://chelsea-apps.com/app/themes/starter-theme/images/chelsea_apps_bournemouth_map.png"
+      imgUrl: "/images/london.png"
     },
     {
       headline: "Chicago Office",
       addr: "Telephone House, Bournemouth, BH1 3NE",
       email: "bournemouth@chelsea-apps.com",
       tel: "+ 020 8057 8878",
-      imgUrl: "https://cdn.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://chelsea-apps.com/app/themes/starter-theme/images/chelsea_apps_bournemouth_map.png"
+      imgUrl: "/images/chicago.png"
     }
   ];
 
@@ -38,7 +38,7 @@ const Accordion = () => {
           <Fragment key={i}>
             <div className={`section-header`} onClick={() => handleChange(i)}>
               {site.headline}
-              <img src="/images/x.svg" className={`accordion-arrow ${activeSection === i ? "arrowOpen" : "arrowClosed"}`} alt=""/>
+              <img src="/images/right_arrow.svg" className={`accordion-arrow ${activeSection === i ? "arrowOpen" : "arrowClosed"}`} alt=""/>
             </div>
             <div
               className={`section-content ${

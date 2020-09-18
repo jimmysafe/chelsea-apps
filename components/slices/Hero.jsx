@@ -1,4 +1,4 @@
-
+import { Fragment } from 'react'
 
 const Hero = (props) => {
 
@@ -19,9 +19,9 @@ const Hero = (props) => {
         >
             <div className="container mb-4">
                 <h1>
-                        {hero.hero_heading.map((line, i) => (
+                        {hero.hero_heading.map(line => (
                             <span 
-                                key={i}
+                                key={line.text}
                                 style={{
                                     background: colors.pageColor,
                                     color: colors.textColor
@@ -33,10 +33,9 @@ const Hero = (props) => {
                 </h1>
             </div>
             <div id="container-target" className="container" style={{ lineHeight: 1 }}>
-                {hero.hero_subheading.map((line, i) => (
-                    <>
+                {hero.hero_subheading.map(line => (
+                    <Fragment key={line.text}>
                     <span 
-                        key={'sub-' + i}
                         style={{
                             background: colors.pageColor,
                             color: colors.textColor
@@ -45,7 +44,7 @@ const Hero = (props) => {
                         { line.text }
                     </span>
                     <br/>
-                    </>
+                    </Fragment>
                 ))}
             </div>
         </section>

@@ -5,7 +5,7 @@ import { getSinglePage } from '../prismic/queries';
 export default function Page({ page, err }) {
     return (
         <>
-        {/* <Seo page={page} /> */}
+        <Seo page={page} />
         <div className="page-content">
             {page.data.body.map((slice, i) => (
                 <Slice key={i} slice={slice} page={page}/>
