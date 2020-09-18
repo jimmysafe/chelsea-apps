@@ -20,12 +20,12 @@ const TextField = (props) => {
                 }}
             >
                 <div className="container">
-                    {field.section_title[0].text && 
+                    {field.section_title.length > 0 && 
                         <h3>
                             { field.section_title[0].text }
                         </h3>
                     }
-                    {field.section_body[0].text &&
+                    {field.section_body.length > 0 &&
                         <p style={{ marginTop: field.section_title[0].text ? '1rem' : '0' }}>{ field.section_body[0].text }</p>
                     }
                 </div>

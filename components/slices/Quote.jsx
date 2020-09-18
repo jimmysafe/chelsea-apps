@@ -18,9 +18,11 @@ const Quote = (props) => {
                         
                         <div className={`quote-container ${ quote.quote_color === 'white' ? "white" : '' }`}>
                             <h4>{ quote.quote_body[0].text }</h4>
-                            <p id="quote_author" className="mt-5">
-                                { quote.quote_author[0].text }
-                            </p>
+                            {quote.quote_author && quote.quote_author[0] &&
+                                <p id="quote_author" className="mt-5">
+                                    { quote.quote_author[0].text }
+                                </p>
+                            }
                         </div>
 
                         <img src={getQuoteUrl()} alt="Quote2" className="quotes-on-home" style={{ position: 'absolute', bottom: 0, right: '100px', transform: 'rotate(180deg)' }} />
