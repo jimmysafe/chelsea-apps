@@ -1,4 +1,5 @@
 import { getBgColor, getTextColor } from '../../../utils'
+import { RichText } from 'prismic-reactjs'
 
 const IconColumn = ({ section, colors }) => {
     return (
@@ -20,7 +21,7 @@ const IconColumn = ({ section, colors }) => {
                         }
                     </div>
                     <div className="stage-body" style={{ color: getTextColor(section.primary.background_color, colors) }}>
-                        <p>{ item.column_text[0].text }</p>
+                        <RichText render={item.column_text}/>
                     </div>
                 </div>
             ))}

@@ -1,7 +1,9 @@
 import { getBgColor, getTextColor } from '../../../utils'
 import Leak from '../../common/Leak'
+import { RichText } from 'prismic-reactjs'
 
 const NormalColumn = ({ colors, section }) => {
+
     return (
         <div style={{ position: "relative" }}>
             <section className="stages">
@@ -20,7 +22,7 @@ const NormalColumn = ({ colors, section }) => {
                                     <h3>{ item.column_title[0].text }</h3>
                                     <img src={item.image.url} alt={`Chelsea Apps ${item.image.alt}`} />
                                     <div>
-                                        <p>{ item.column_text[0].text }</p>
+                                        <RichText render={item.column_text}/>
                                     </div>
                                 </div>
                             ))}

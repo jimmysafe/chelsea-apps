@@ -1,5 +1,6 @@
 import { hrefResolver, linkResolver } from '../../../prismic/prismic-configuration'
 import Link from 'next/link'
+import { RichText } from 'prismic-reactjs'
 
 const AnimatedColumn = ({ section }) => {
     return (
@@ -25,7 +26,7 @@ const AnimatedColumn = ({ section }) => {
                                         </Link>
                                     }
                                     <div>
-                                        <p>{ item.column_text[0].text }</p>
+                                        <RichText render={item.column_text}/>
                                     </div>
                                 </div>
                             ))}
