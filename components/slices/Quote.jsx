@@ -9,6 +9,8 @@ const Quote = (props) => {
         else return '/images/quotes_white.svg'
     }
 
+    console.log(quote)
+
     return (
         <div style={{ position: "relative" }}>
             <section className={`quote ${quote.quote_color === "white" ? "blck" : "bg-white-quote"}`}>
