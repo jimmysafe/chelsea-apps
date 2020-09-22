@@ -9,6 +9,9 @@ const TextField = (props) => {
         pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
     }
 
+    const title = field.section_title.length > 0 && field.section_title[0].text
+    const body = field.section_body.length > 0  && field.section_body[0].text
+
     return (
         <div style={{ position: "relative" }}>
             <section 
@@ -16,17 +19,15 @@ const TextField = (props) => {
                 style={{
                     color: getTextColor(field.section_color, colors),
                     background: getBgColor(field.section_color, colors),
-                    padding: field.section_title[0].text ? '3rem 0' : '4rem 0!important'
+                    padding: title ? '3rem 0' : '4rem 0!important'
                 }}
             >
                 <div className="container">
-                    {field.section_title.length > 0 && 
-                        <h3>
-                            { field.section_title[0].text }
-                        </h3>
+                    {title && 
+                        <h3>{ title }</h3>
                     }
-                    {field.section_body.length > 0 &&
-                        <p style={{ marginTop: field.section_title[0].text ? '1rem' : '0' }}>{ field.section_body[0].text }</p>
+                    {body &&
+                        <p style={{ marginTop: title ? '1rem' : '0' }}>{ body }</p>
                     }
                 </div>
             </section>
