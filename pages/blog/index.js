@@ -47,6 +47,8 @@ const BlogPage = ({ posts: allPosts, page }) => {
         }
     }, [searchTerm])
 
+
+
     return (
         <div id="blog-page"  style={{ background: '#1E1E1E' }}>
             <Link as={linkResolver(allPosts[0])} href={hrefResolver(allPosts[0])}>
@@ -96,15 +98,23 @@ const BlogPage = ({ posts: allPosts, page }) => {
             <div id="all-posts" className="container cat-posts align-items-center container-blog">
                 {posts.map(post => {
                     const banner = post.data.body.find(el => el.slice_type === 'hero_banner')
+                    console.log(banner.primary)
                     return (
                         <Link as={linkResolver(post)} href={hrefResolver(post)} key={post.id}>
                             <a>
                                 <div className="thumbnail">  
                                     <div className="cropper">
                                         <div className="cropper-bg" style={{ backgroundImage: `url( ${banner.primary.image.url} )` }}></div>
-                                        <div className="title-tease"><h3 className="title-test-blog">{banner.primary.hero_heading[0].text}</h3></div>
-                                        <div className="author-tease"><p>Jimmy Grimble</p></div>
-                                        <div className="bottom-blog"><p>Date Here</p></div>
+                                        <div className="title-tease">
+                                            {banner.primary.hero_heading.map((line, i) => (
+                                                <h3 key={i} className="title-test-blog">{line.text}</h3>
+                                            ))}
+                                        </div>
+                                        <div className="author-tease">
+                                            {banner.primary.hero_subheading.map((line, i) => (
+                                                <p key={i}>{line.text}</p>
+                                            ))}
+                                        </div>
                                     </div>	
                                 </div>
                             </a>  
