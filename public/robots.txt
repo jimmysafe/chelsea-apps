@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://chelsea-apps.com/sitemap.xml
