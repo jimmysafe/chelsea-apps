@@ -2224,6 +2224,25 @@ video.lazy {
     min-height: 100vh!important;
 }
 
+.preview {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: red;
+    z-index: 999;
+    color: white;
+    padding: 2rem 3rem;
+    border-radius: 5px;
+}
+
+.exit-preview {
+    text-align: center;
+    padding: 0.2rem 0rem;
+    margin-top: 1rem;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
 
 /* ------------------ MEDIA QUERIES ----------------- */
 
