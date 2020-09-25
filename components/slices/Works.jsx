@@ -8,7 +8,7 @@ const Works = ({ slice }) => {
         <section id="home-projects" style={{ position: "relative" }}>
             <div className="container d-flex flex-wrap justify-content-between">
                 {slice.items.map((work, i) => (
-                    <div className="square project-container">
+                    <div className="square project-container" key={i}>
                         <Link as={linkResolver(work.link)} href={hrefResolver(work.link)} key={i}>
                             <a>
                                 <div className="content">

@@ -11,7 +11,7 @@ const IconColumn = ({ section, colors }) => {
     >
         <div className="container">
             {section.items.map((item, i) => (
-                <div className="stage">
+                <div className="stage" key={i}>
                     <div className="stage-header" style={{ background: '#FEE315' }}>
                         <h3>{ item.column_title[0].text }</h3>
                         {item.image.url &&

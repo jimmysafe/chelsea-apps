@@ -98,7 +98,6 @@ const BlogPage = ({ posts: allPosts, page }) => {
             <div id="all-posts" className="container cat-posts align-items-center container-blog">
                 {posts.map(post => {
                     const banner = post.data.body.find(el => el.slice_type === 'hero_banner')
-                    console.log(banner.primary)
                     return (
                         <Link as={linkResolver(post)} href={hrefResolver(post)} key={post.id}>
                             <a>
