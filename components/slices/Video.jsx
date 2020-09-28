@@ -15,7 +15,7 @@ const Video = (props) => {
                 background: getBgColor(props.slice.primary.background_color, colors)
                 }}
         >
-            <ReactPlayer url={props.slice.primary.video_url[0].text}/>
+            <ReactPlayer url={props.slice.primary.video_url[0].text} controls/>
         </div>
     )
 }
