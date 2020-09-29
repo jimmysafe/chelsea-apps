@@ -3,8 +3,6 @@ import Link from 'next/link'
 import { hrefResolver, linkResolver } from "../../prismic/prismic-configuration"
 import Hero from "../../components/slices/Hero";
 import { useEffect, useState } from "react";
-import { Client } from '../../prismic/prismic-configuration'
-import Prismic from 'prismic-javascript'
 import { checkIsNotFound } from "../../utils";
 const categories = [ 'culture', 'design', 'development', 'news', 'start-ups', 'strategy' ]
 

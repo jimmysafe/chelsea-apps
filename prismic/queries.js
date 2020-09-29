@@ -60,6 +60,12 @@ export const getPosts = async () => {
   return allPosts.results
 }
 
+export const getPostsUrl = async () => {
+  const posts = await Client().query(Prismic.Predicates.at('document.type', 'post'))
+  let postsUrl = posts.results.map(post => post.uid)
+  return postsUrl
+}
+
 export const getSinglePost = async (uid, previewData) => {
   const { ref } = previewData
   const post = await Client().getByUID("post", uid, ref ? { ref } : null)
