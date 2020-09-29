@@ -20,7 +20,6 @@ const ContactForm = () => {
         onSubmit: async(values) => {
             setSubmitting(true)
             let res = await axios.post(`${siteUrl}/api/mail`, { values })
-            console.log(res.data)
             if(res.data.success) {
                 setSubmitting(false)
                 formik.handleReset()
@@ -33,6 +32,7 @@ const ContactForm = () => {
             }
         },
       });
+
     
     return (
         <div id="contact-page">
@@ -42,7 +42,7 @@ const ContactForm = () => {
                         <h3 className="contact-title" style={{ color: 'white', padding: '9px 0'}}>Contact us</h3>
                         <div className="form-container">
                         
-                            <form id="form_contact" className="input-form">
+                            <form id="form_contact" className="input-form" onSubmit={formik.handleSubmit}>
                                 <div className="cover-form">
                                     <input 
                                         name="name"
@@ -94,7 +94,7 @@ const ContactForm = () => {
                                     <div className="notification">
                                         {showSuccessMessage && 
                                             <div className="notification-message success">
-                                                <p>Message Sent! We will get back in touch asap!</p>
+                                                <p>Message Sent! Check your inbox</p>
                                             </div>
                                         }
                                         {showErrorMessage &&
@@ -108,13 +108,14 @@ const ContactForm = () => {
                                 <div className="leak svg-right svg-white">                              
                                 {/* {{ source ('images/shape.svg') }} */}
                                 </div>
-                            <button 
-                                className="form-contact-submit progress-button" 
-                                data-style="fill" 
-                                data-horizontal
-                                disabled={submitting}
-                            >
-                                    {submitting ? 'Loading..' : 'Submit'}
+                                <button 
+                                    type="submit"
+                                    className="form-contact-submit progress-button" 
+                                    data-style="fill" 
+                                    data-horizontal
+                                    disabled={submitting}
+                                >
+                                        {submitting ? 'Loading..' : 'Submit'}
                                 </button>
                         </form>
                         

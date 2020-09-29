@@ -2249,6 +2249,13 @@ video.lazy {
     cursor: pointer;
 }
 
+.notification-message {
+    color: white;
+    padding: 2rem 0;
+}
+
+
+
 /* ------------------ MEDIA QUERIES ----------------- */
 
 
