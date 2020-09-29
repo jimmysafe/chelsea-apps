@@ -1,9 +1,9 @@
-import { getPosts, getSinglePage } from "../../prismic/queries"
+import { getPosts, getSinglePage } from "../prismic/queries"
 import Link from 'next/link'
-import { hrefResolver, linkResolver } from "../../prismic/prismic-configuration"
-import Hero from "../../components/slices/Hero";
+import { hrefResolver, linkResolver } from "../prismic/prismic-configuration"
+import Hero from "../components/slices/Hero";
 import { useEffect, useState } from "react";
-import { checkIsNotFound } from "../../utils";
+import { checkIsNotFound } from "../utils";
 const categories = [ 'culture', 'design', 'development', 'news', 'start-ups', 'strategy' ]
 
 const BlogPage = ({ posts: allPosts, page }) => {

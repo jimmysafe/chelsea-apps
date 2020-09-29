@@ -1,34 +1,43 @@
 import Slice from '../components/Slice';
-import { getSinglePage, getPostsUrl } from '../prismic/queries';
+import { getSinglePage, getSinglePost, nextLink, prevLink } from '../prismic/queries';
 import { checkIsNotFound } from '../utils';
+import PostBottomNavigation from '../components/common/PostBottomNavigation'
 
-export default function Page({ page, err }) {
+export default function Page({ page, err, prev, next }) {
     return (
         <div className="page-content">
             {page.data.body.map((slice, i) => (
                 <Slice key={i} slice={slice} page={page}/>
             ))}
+            {page.type === "post" && 
+                <PostBottomNavigation prev={prev} next={next} />
+            }
         </div>
     )
 }
 
 export async function getServerSideProps({ res, params, preview = null, previewData = {} }) {
-    const page = await getSinglePage(params.page, previewData)
-    
-    // Needed for migration from wordpress where posts are /post instead of /blog/post
-    const postsUrl = await getPostsUrl()
-    if(postsUrl.includes(params.page)){
-        res.writeHead(302, {
-            Location: `/blog/${params.page}`
-        });
-        res.end();
-        return
+    let page
+    const queriedPage = await getSinglePage(params.page, previewData)
+
+    if(!queriedPage){
+        const queriedPost = await getSinglePost(params.page, previewData)
+        page = queriedPost
+    } else {
+        page = queriedPage
     }
+
+    const next = await nextLink('post', page.id)
+    const prev = await prevLink('post', page.id)
+    
     
     checkIsNotFound(page, res)
+    
     return {
       props: {
         page,
+        next,
+        prev,
         preview
       }
     }

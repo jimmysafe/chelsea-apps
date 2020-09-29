@@ -37,11 +37,11 @@ const Footer = ({ bgColor, textColor }) => {
                         <p style={{ fontWeight: 100 }}>a project you want to  </p>
                         <p style={{ fontWeight: 100 }}> discuss. </p>
                     </div>
-                    <div className="tab-footer text-center">
-                        <Link href="/contact">
-                            <h3>Contact us</h3>
-                        </Link>
-                    </div>
+                    <Link href="/contact">
+                        <div className="tab-footer text-center" style={{ cursor: 'pointer' }}>
+                                <h3>Contact us</h3>
+                        </div>
+                    </Link>
                 </div>
                 <section className="footer-logo-container">
                     <div className="footer-logo">

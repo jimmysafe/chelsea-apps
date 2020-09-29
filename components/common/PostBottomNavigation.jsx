@@ -5,7 +5,7 @@ const PostBottomNavigation = ({ next, prev }) => {
         <section className="page-links" style={{ background: '#FEE315' }}>
             <div className="container d-flex py-5" style={{ justifyContent: 'space-between' }}>
                 {prev && prev[0] ?
-                    <Link as={`/blog/${prev[0].uid}`} href={'/blog/[post]'}>
+                    <Link as={`/${prev[0].uid}`} href={'/[page]'}>
                         <a><i className="arrow left"></i></a>
                     </Link>
                     : 
@@ -18,7 +18,7 @@ const PostBottomNavigation = ({ next, prev }) => {
       
 
                 {next && next[0] ?
-                    <Link as={`/blog/${next[0].uid}`} href={'/blog/[post]'}>
+                    <Link as={`/${next[0].uid}`} href={'/[page]'}>
                         <a><i className="arrow right"></i></a>
                     </Link>
                     : 

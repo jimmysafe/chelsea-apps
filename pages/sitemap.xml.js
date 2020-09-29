@@ -11,7 +11,7 @@ const createSitemap = (pages) => {
                     case 'page':
                         return `<url><loc>${`https://chelsea-apps.com/${page.uid}`}</loc></url>`
                     case 'post':
-                        return `<url><loc>${`https://chelsea-apps.com/blog/${page.uid}`}</loc></url>`
+                        return `<url><loc>${`https://chelsea-apps.com/${page.uid}`}</loc></url>`
                     case 'project':
                         return `<url><loc>${`https://chelsea-apps.com/our-work/${page.uid}`}</loc></url>`
                     case 'service':

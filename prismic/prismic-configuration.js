@@ -26,7 +26,7 @@ export const linkResolver = (doc) => {
     case 'project':
       return `/our-work/${doc.uid}`
     case 'post':
-      return `/blog/${doc.uid}`
+      return `/${doc.uid}`
     default:
       return '/'
   }
@@ -42,7 +42,7 @@ export const hrefResolver = (doc) => {
     case 'project':
       return `/our-work/[project]`
     case 'post':
-      return `/blog/[post]`
+      return `/[page]`
     default:
       return '/[page]'
   }

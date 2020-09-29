@@ -564,6 +564,11 @@ ul {
     list-style: none;
     text-transform: uppercase;
 }
+
+.post-section-content ul {
+    list-style: square!important;
+    text-transform: none!important;
+}
 header nav ul{
     display: flex;
     align-items: center;
