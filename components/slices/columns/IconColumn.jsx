@@ -1,5 +1,6 @@
 import { getBgColor, getTextColor } from '../../../utils'
 import { RichText } from 'prismic-reactjs'
+import { linkResolver } from '../../../prismic/prismic-configuration'
 
 const IconColumn = ({ section, colors }) => {
     return (
@@ -21,7 +22,7 @@ const IconColumn = ({ section, colors }) => {
                         }
                     </div>
                     <div className="stage-body" style={{ color: getTextColor(section.primary.background_color, colors) }}>
-                        <RichText render={item.column_text}/>
+                        <RichText render={item.column_text} linkResolver={linkResolver}/>
                     </div>
                 </div>
             ))}

@@ -26,7 +26,7 @@ const AnimatedColumn = ({ section }) => {
                                         </Link>
                                     }
                                     <div>
-                                        <RichText render={item.column_text}/>
+                                        <RichText render={item.column_text} linkResolver={linkResolver}/>
                                     </div>
                                 </div>
                             ))}

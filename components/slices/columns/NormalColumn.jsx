@@ -1,6 +1,7 @@
 import { getBgColor, getTextColor } from '../../../utils'
 import Leak from '../../common/Leak'
 import { RichText } from 'prismic-reactjs'
+import { linkResolver } from '../../../prismic/prismic-configuration'
 
 const NormalColumn = ({ colors, section }) => {
 
@@ -22,7 +23,7 @@ const NormalColumn = ({ colors, section }) => {
                                     <h3>{ item.column_title[0].text }</h3>
                                     <img src={item.image.url} alt={`Chelsea Apps ${item.image.alt}`} />
                                     <div>
-                                        <RichText render={item.column_text}/>
+                                        <RichText render={item.column_text} linkResolver={linkResolver}/>
                                     </div>
                                 </div>
                             ))}

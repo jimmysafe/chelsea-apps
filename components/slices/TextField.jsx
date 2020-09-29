@@ -1,5 +1,7 @@
 import Leak from '../common/Leak'
 import { getBgColor, getTextColor } from '../../utils'
+import { RichText } from 'prismic-reactjs';
+import { linkResolver } from '../../prismic/prismic-configuration'
 
 const TextField = (props) => {
 
@@ -27,7 +29,7 @@ const TextField = (props) => {
                         <h3>{ title }</h3>
                     }
                     {body &&
-                        <p style={{ marginTop: title ? '1rem' : '0' }}>{ body }</p>
+                        <RichText render={field.section_body} linkResolver={linkResolver} style={{ marginTop: title ? '1rem' : '0' }}/>
                     }
                 </div>
             </section>

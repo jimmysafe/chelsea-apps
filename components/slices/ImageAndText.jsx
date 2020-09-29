@@ -1,6 +1,8 @@
 import React from 'react'
 import Leak from '../common/Leak'
 import { getBgColor, getTextColor } from '../../utils'
+import { RichText } from 'prismic-reactjs';
+import { linkResolver } from '../../prismic/prismic-configuration'
 
 const ImageAndText = (props) => {
 
@@ -22,7 +24,7 @@ const ImageAndText = (props) => {
                 <div className="container d-flex">
                     <div className="sgl-column">
                         <h3>{section.title1[0].text}</h3>
-                        <p>{section.section_body[0].text}</p>
+                        <RichText render={section.section_body} linkResolver={linkResolver} />
                     </div>
                     <div className="sgl-column">
                         <img src={section.image.url} style={{ width: "100%" }} alt={`Chelsea Apps ${section.image.alt}`} />
