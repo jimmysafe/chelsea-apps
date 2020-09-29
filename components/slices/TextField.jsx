@@ -29,7 +29,9 @@ const TextField = (props) => {
                         <h3>{ title }</h3>
                     }
                     {body &&
-                        <RichText render={field.section_body} linkResolver={linkResolver} style={{ marginTop: title ? '1rem' : '0' }}/>
+                        <div style={{ marginTop: title ? '1rem' : '0' }}>
+                            <RichText render={field.section_body} linkResolver={linkResolver}/>
+                        </div>
                     }
                 </div>
             </section>
