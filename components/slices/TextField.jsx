@@ -6,10 +6,6 @@ import { linkResolver } from '../../prismic/prismic-configuration'
 const TextField = (props) => {
 
     const field = props.slice.primary
-    const colors = {
-        textColor: props.page.data.page_text_color,
-        pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
-    }
 
     const title = field.section_title.length > 0 && field.section_title[0].text
     const body = field.section_body.length > 0  && field.section_body[0].text
@@ -19,8 +15,8 @@ const TextField = (props) => {
             <section 
                 className="py-5 text-field"
                 style={{
-                    color: getTextColor(field.section_color, colors),
-                    background: getBgColor(field.section_color, colors),
+                    color: getTextColor(field.section_color, props),
+                    background: getBgColor(field.section_color, props),
                     padding: title ? '3rem 0' : '4rem 0!important'
                 }}
             >
@@ -35,7 +31,7 @@ const TextField = (props) => {
                     }
                 </div>
             </section>
-            <Leak leak={field.leak} color={getBgColor(field.section_color, colors)}/>
+            <Leak leak={field.leak} color={getBgColor(field.section_color, props)}/>
         </div>
     )
 }

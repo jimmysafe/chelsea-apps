@@ -2,7 +2,8 @@ import { hrefResolver, linkResolver } from '../../../prismic/prismic-configurati
 import Link from 'next/link'
 import { RichText } from 'prismic-reactjs'
 
-const AnimatedColumn = ({ section }) => {
+const AnimatedColumn = (props) => {
+    const section = props.slice
     return (
         <div className="three-column-with-image-animation-and-link">
             <section className="stages">

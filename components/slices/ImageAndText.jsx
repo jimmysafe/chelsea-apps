@@ -7,18 +7,14 @@ import { linkResolver } from '../../prismic/prismic-configuration'
 const ImageAndText = (props) => {
 
     const section = props.slice.primary
-    const colors = {
-        textColor: props.page.data.page_text_color,
-        pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
-    }
 
     return (
         <div style={{ position: "relative" }}>
             <section 
                 className="sgl solution" 
                 style={{ 
-                    color: getTextColor(section.section_color, colors), 
-                    background: getBgColor(section.section_color, colors) 
+                    color: getTextColor(section.section_color, props), 
+                    background: getBgColor(section.section_color, props) 
                 }}
             >
                 <div className="container d-flex">
@@ -31,7 +27,7 @@ const ImageAndText = (props) => {
                     </div>
                 </div>
             </section>
-            <Leak leak={section.leak} color={getBgColor(section.section_color, colors)}/>
+            <Leak leak={section.leak} color={getBgColor(section.section_color, props)}/>
         </div>
     )
 }

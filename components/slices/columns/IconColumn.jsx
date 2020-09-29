@@ -2,12 +2,13 @@ import { getBgColor, getTextColor } from '../../../utils'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../../../prismic/prismic-configuration'
 
-const IconColumn = ({ section, colors }) => {
+const IconColumn = (props) => {
+    const section = props.slice
     return (
     <section 
         className="three-text-column"
         style={{ 
-            background: getBgColor(section.primary.background_color, colors) 
+            background: getBgColor(section.primary.background_color, props) 
         }}
     >
         <div className="container">
@@ -21,7 +22,7 @@ const IconColumn = ({ section, colors }) => {
                             </div>
                         }
                     </div>
-                    <div className="stage-body" style={{ color: getTextColor(section.primary.background_color, colors) }}>
+                    <div className="stage-body" style={{ color: getTextColor(section.primary.background_color, props) }}>
                         <RichText render={item.column_text} linkResolver={linkResolver}/>
                     </div>
                 </div>

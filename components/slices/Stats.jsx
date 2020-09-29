@@ -4,11 +4,6 @@ const Stats = (props) => {
 
     const stats = props.slice.items
 
-    const colors = {
-        textColor: props.page.data.page_text_color,
-        pageColor: props.page.data.page_color
-    }
-
     return (
         <div style={{ position: "relative" }}>
         <div className="results-data-container py-5">
@@ -18,8 +13,8 @@ const Stats = (props) => {
                         <div 
                             className="statistic-card"
                             style={{ 
-                                color: getTextColor(props.slice.primary.stats_color, colors), 
-                                background: getBgColor(props.slice.primary.stats_color, colors)
+                                color: getTextColor(props.slice.primary.stats_color, props), 
+                                background: getBgColor(props.slice.primary.stats_color, props)
                             }} 
                         >
                             {stat.icon.url &&

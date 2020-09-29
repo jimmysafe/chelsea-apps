@@ -4,15 +4,11 @@ const Brands = (props) => {
 
     const brands = props.slice.items
     const sectionColor = props.slice.primary.section_color
-    const colors = {
-        textColor: props.page.data.page_text_color,
-        pageColor: props.page.data.page_color
-    }
 
     return (
         <section 
             className="brand-block py-5" 
-            style={{ background: getBgColor(sectionColor, colors) }}
+            style={{ background: getBgColor(sectionColor, props) }}
         >
             <div className="container">
                 <div className="brand-container">

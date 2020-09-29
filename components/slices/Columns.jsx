@@ -3,23 +3,17 @@ import IconColumn from './columns/IconColumn'
 import AnimatedColumn from './columns/AnimatedColumn'
 
 const Columns = (props) => {
-
     const section = props.slice
-    const colors = {
-        textColor: props.page.data.page_text_color,
-        pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
-    }
-
     const renderColumn = () => {
         switch(section.primary.type){
             case 'normal':
-                return <NormalColumn colors={colors} section={section}/>
+                return <NormalColumn { ...props }/>
             case 'icon':
-                return <IconColumn colors={colors} section={section}/>
+                return <IconColumn { ...props }/>
             case 'animatable':
-                return <AnimatedColumn  section={section}/>
+                return <AnimatedColumn  { ...props }/>
             default:
-                return <NormalColumn colors={colors} section={section}/>
+                return <NormalColumn { ...props }/>
         }
     }
 

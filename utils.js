@@ -1,7 +1,10 @@
 export const siteUrl = process.env.NODE_ENV === 'development' ? 'https://localhost:3000' : 'https://chantalciaffardini.com'
 
-export const getBgColor = (color, pageColors) => {
-
+export const getBgColor = (color, props) => {
+    const pageColors = {
+        textColor: props.page.data.page_text_color,
+        pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
+    }
     switch(color){
         case 'page color':
             return pageColors.pageColor
@@ -14,7 +17,11 @@ export const getBgColor = (color, pageColors) => {
     }
 }  
 
-export const getTextColor = (color, pageColors) => {
+export const getTextColor = (color, props) => {
+    const pageColors = {
+        textColor: props.page.data.page_text_color,
+        pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
+    }
     switch(color){
         case 'page color':
             return pageColors.textColor

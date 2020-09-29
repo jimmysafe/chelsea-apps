@@ -3,8 +3,8 @@ import Leak from '../../common/Leak'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../../../prismic/prismic-configuration'
 
-const NormalColumn = ({ colors, section }) => {
-
+const NormalColumn = (props) => {
+    const section = props.slice
     return (
         <div style={{ position: "relative" }}>
             <section className="stages">
@@ -13,8 +13,8 @@ const NormalColumn = ({ colors, section }) => {
                         className="stage-section py-5"
                         style= {{ 
                             position: 'relative',
-                            color: getTextColor(section.primary.background_color, colors),  
-                            background: getBgColor(section.primary.background_color, colors)
+                            color: getTextColor(section.primary.background_color, props),  
+                            background: getBgColor(section.primary.background_color, props)
                         }}
                     >
                         <div className="container stage-core d-flex" style={{ flex: 2 }}>
@@ -31,7 +31,7 @@ const NormalColumn = ({ colors, section }) => {
                     </div>
                 </div>
             </section>
-            <Leak leak={section.primary.leak} color={getBgColor(section.primary.background_color, colors)}/>
+            <Leak leak={section.primary.leak} color={getBgColor(section.primary.background_color, props)}/>
         </div>
     )
 }

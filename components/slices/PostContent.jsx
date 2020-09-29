@@ -3,13 +3,9 @@ import { RichText } from 'prismic-reactjs';
 import { linkResolver } from '../../prismic/prismic-configuration'
 import { getBgColor, getTextColor } from '../../utils'
 
-const PostContent = ({ slice }) => {
+const PostContent = (props) => {
 
-    const { items } = slice
-    const colors = {
-        pageColor: '#FEE315',
-        textColor: '#1E1E1E'
-    }
+    const { items } = props.slice
 
     return (
         <>
@@ -20,8 +16,8 @@ const PostContent = ({ slice }) => {
                 style={{
                     position: 'relative',
                     padding: '3rem 0',
-                    color: getTextColor(item.post_section_color, colors),
-                    background: getBgColor(item.post_section_color, colors)
+                    color: getTextColor(item.post_section_color, props),
+                    background: getBgColor(item.post_section_color, props)
                 }}
             >
                 <div className="container">
