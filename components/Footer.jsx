@@ -5,7 +5,7 @@ import FooterVideo from './common/FooterVideo'
 const bottomLinks = [
     {
         "name": "Sitemap",
-        "url": "sitemap"
+        "url": "sitemap.xml"
     },
     {
         "name": "Privacy Policy",
