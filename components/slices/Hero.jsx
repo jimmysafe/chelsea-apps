@@ -1,13 +1,14 @@
 import { Fragment } from 'react'
+import HomeHero from '../common/HomeHero'
 
 const Hero = (props) => {
-
     const hero = props.slice.primary
     const colors = {
         textColor: props.page.data.page_text_color,
         pageColor: props.page.data.page_color ? props.page.data.page_color : '#FEE315'
     }
 
+    if(props.page.uid === 'homepage') return <HomeHero />
     return (
         <section 
             id="hero" 

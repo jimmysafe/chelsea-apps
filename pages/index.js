@@ -1,7 +1,6 @@
 import { getSinglePage } from "../prismic/queries"
 import Slice from '../components/Slice'
 import { checkIsNotFound } from "../utils"
-import Video from "../components/slices/Video"
 
 const Home = (props) => {
   const page = props.page

@@ -11,13 +11,24 @@ const Nav = ({ bgColor, textColor }) => {
     const NavItem = (item, isMobile) => {
 
         const customLink = (link) => {
+
+            function navigate(link){
+                if(link === "/"){
+                    window.location.href = window.location.origin;
+                    setOpen(!open)
+                } else {
+                    router.push(link)
+                    setOpen(!open)
+                } 
+            }
+
             return (
                 <li 
                     className={isMobile ? (open ? 'is-shown delay' : 'no-delay') : ''}
-                    onClick={() => { router.push(link); setOpen(!open) }} 
+                    onClick={() => navigate(link)} 
                     key={item.name}
                 >
-                    <a className={isMobile ? '': textColor}>
+                    <a className={isMobile ? '': textColor}>    
                         {item.name}
                     </a>
                 </li>
